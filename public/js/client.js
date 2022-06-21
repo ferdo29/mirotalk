@@ -95,6 +95,7 @@ let isScreenSharingSupported = false;
 let notify = getNotify();
 let useAudio = true;
 let useVideo = true;
+
 let camera = 'user';
 let roomLocked = false;
 let myVideoChange = false;
@@ -1272,9 +1273,6 @@ function setupLocalMedia(callback, errorback) {
         .catch((err) => {
             console.error('Access denied for audio/video', err);
             playSound('alert');
-            openURL(
-                `/permission?roomId=${roomId}&getUserMediaError=${err.toString()} <br/> Check the common getusermedia errors <a href="https://blog.addpipe.com/common-getusermedia-errors" target="_blank">here<a/>`,
-            );
             if (errorback) errorback();
         });
 } // end [setup_local_stream]
