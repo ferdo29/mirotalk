@@ -26,7 +26,7 @@ const roomId = getRoomId();
 const peerInfo = getPeerInfo();
 const peerLoockupUrl = 'https://extreme-ip-lookup.com/json/?key=demo2'; // get your API Key at https://extreme-ip-lookup.com
 const avatarApiUrl = 'https://eu.ui-avatars.com/api';
-const surveyURL = 'https://www.questionpro.com/t/AUs7VZq00L';
+const surveyURL = 'https://www.droploot.ru';
 const welcomeImg = '../images/image-placeholder.png';
 const shareUrlImg = '../images/image-placeholder.png';
 const leaveRoomImg = '../images/leave-room.png';
@@ -40,7 +40,7 @@ const youtubeImg = '../images/youtube.png';
 const messageImg = '../images/message.png';
 const kickedOutImg = '../images/leave-room.png';
 const aboutImg = '../images/mirotalk-logo.png';
-// nice free icon: https://www.iconfinder.com
+// nice free icon: https://www.iconfinder.com 
 
 const surveyActive = true; // when leaving the room give a feedback
 const notifyBySound = true; // turn on - off sound notifications
@@ -95,6 +95,7 @@ let isScreenSharingSupported = false;
 let notify = getNotify();
 let useAudio = true;
 let useVideo = true;
+
 let camera = 'user';
 let roomLocked = false;
 let myVideoChange = false;
@@ -147,7 +148,6 @@ let myHandBtn;
 let whiteboardBtn;
 let fileShareBtn;
 let mySettingsBtn;
-let aboutBtn;
 let leaveRoomBtn;
 // chat room elements
 let msgerDraggable;
@@ -288,7 +288,6 @@ const showMyHandBtn = true;
 const showWhiteboardBtn = true;
 const showFileShareBtn = true;
 const showMySettingsBtn = true;
-const showAboutBtn = true;
 
 /**
  * Load all Html elements by Id
@@ -314,7 +313,6 @@ function getHtmlElementsById() {
     fileShareBtn = getId('fileShareBtn');
     myHandBtn = getId('myHandBtn');
     mySettingsBtn = getId('mySettingsBtn');
-    aboutBtn = getId('aboutBtn');
     leaveRoomBtn = getId('leaveRoomBtn');
     // chat Room elements
     msgerDraggable = getId('msgerDraggable');
@@ -434,7 +432,6 @@ function setButtonsToolTip() {
     setTippy(whiteboardBtn, 'Open the whiteboard', 'right-start');
     setTippy(fileShareBtn, 'Share file', 'right-start');
     setTippy(mySettingsBtn, 'Open settings', 'right-start');
-    setTippy(aboutBtn, 'Project info', 'right-start');
     setTippy(leaveRoomBtn, 'Leave this room', 'right-start');
     // chat room buttons
     setTippy(msgerTheme, 'Ghost theme', 'top');
@@ -1276,9 +1273,6 @@ function setupLocalMedia(callback, errorback) {
         .catch((err) => {
             console.error('Access denied for audio/video', err);
             playSound('alert');
-            openURL(
-                `/permission?roomId=${roomId}&getUserMediaError=${err.toString()} <br/> Check the common getusermedia errors <a href="https://blog.addpipe.com/common-getusermedia-errors" target="_blank">here<a/>`,
-            );
             if (errorback) errorback();
         });
 } // end [setup_local_stream]
@@ -2004,7 +1998,6 @@ function manageLeftButtons() {
     setMyWhiteboardBtn();
     setMyFileShareBtn();
     setMySettingsBtn();
-    setAboutBtn();
     setLeaveRoomBtn();
 }
 
@@ -2025,7 +2018,6 @@ function hideLeftButtons() {
     if (!showWhiteboardBtn) whiteboardBtn.style.display = 'none';
     if (!showFileShareBtn) fileShareBtn.style.display = 'none';
     if (!showMySettingsBtn) mySettingsBtn.style.display = 'none';
-    if (!showAboutBtn) aboutBtn.style.display = 'none';
 }
 
 /**
@@ -2429,11 +2421,7 @@ function setMySettingsBtn() {
 /**
  * About button click event
  */
-function setAboutBtn() {
-    aboutBtn.addEventListener('click', (e) => {
-        showAbout();
-    });
-}
+
 
 /**
  * Leave room button click event
@@ -5626,33 +5614,33 @@ function handleKickedOut(config) {
 /**
  * MiroTalk about info
  */
-function showAbout() {
-    playSound('newMessage');
+// function showAbout() {
+//     playSound('newMessage');
 
-    Swal.fire({
-        background: swalBackground,
-        position: 'center',
-        title: '<strong>WebRTC P2P</strong>',
-        imageAlt: 'mirotalk-about',
-        imageUrl: aboutImg,
-        html: `
-        <br/>
-        <div id="about">
-            <b><a href="https://github.com/miroslavpejic85/mirotalk" target="_blank">Open Source</a></b> project
-            <br/><br/>
-            <button class="pulsate" onclick="window.open('https://github.com/sponsors/miroslavpejic85?o=esb')"><i class="fas fa-heart" ></i>&nbsp;Sponsor</button>
-            <br /><br />
-            Author:<a href="https://www.linkedin.com/in/miroslav-pejic-976a07101/" target="_blank"> Miroslav Pejic</a>
-        </div>
-        `,
-        showClass: {
-            popup: 'animate__animated animate__fadeInDown',
-        },
-        hideClass: {
-            popup: 'animate__animated animate__fadeOutUp',
-        },
-    });
-}
+//     Swal.fire({
+//         background: swalBackground,
+//         position: 'center',
+//         title: '<strong>WebRTC P2P</strong>',
+//         imageAlt: 'mirotalk-about',
+//         imageUrl: aboutImg,
+//         html: `
+//         <br/>
+//         <div id="about">
+//             <b><a href="https://github.com/miroslavpejic85/mirotalk" target="_blank">Open Source</a></b> project
+//             <br/><br/>
+//             <button class="pulsate" onclick="window.open('https://github.com/sponsors/miroslavpejic85?o=esb')"><i class="fas fa-heart" ></i>&nbsp;Sponsor</button>
+//             <br /><br />
+//             Author:<a href="https://www.linkedin.com/in/miroslav-pejic-976a07101/" target="_blank"> Miroslav Pejic</a>
+//         </div>
+//         `,
+//         showClass: {
+//             popup: 'animate__animated animate__fadeInDown',
+//         },
+//         hideClass: {
+//             popup: 'animate__animated animate__fadeOutUp',
+//         },
+//     });
+// }
 
 /**
  * Leave the Room and create a new one
